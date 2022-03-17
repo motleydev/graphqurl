@@ -1,9 +1,9 @@
-const throwError = err => {
-  console.error('Error: ', err);
+const throwError = (err: any) => {
+  console.error("Error: ", err);
   process.exit(1);
 };
 
-const handleGraphQLError = err => {
+export const handleGraphQLError = (err: any) => {
   if (err.message) {
     let errorMessage = err.message;
     if (err.locations) {
@@ -11,7 +11,7 @@ const handleGraphQLError = err => {
       for (const l of err.locations) {
         locs.push(`line: ${l.line}, column: ${l.column}`);
       }
-      errorMessage += `\n${locs.join(',')}`;
+      errorMessage += `\n${locs.join(",")}`;
     }
     throwError(errorMessage);
   } else {
@@ -19,23 +19,18 @@ const handleGraphQLError = err => {
   }
 };
 
-const handleServerError = err => {
+export const handleServerError = (err: any) => {
   if (err.networkError && err.networkError.statusCode) {
     if (err.networkError.result && err.networkError.result.errors) {
       let errorMessages = [];
       for (const e of err.networkError.result.errors) {
         errorMessages.push(`[${e.code}] at [${e.path}]: ${e.error}`);
       }
-      throwError(errorMessages.join('\n'));
+      throwError(errorMessages.join("\n"));
     } else {
       throwError(err.message);
     }
   } else {
     throwError(err);
   }
-};
-
-module.exports = {
-  handleGraphQLError,
-  handleServerError,
 };

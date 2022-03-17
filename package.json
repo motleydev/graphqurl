@@ -26,9 +26,12 @@
     "ws": "7.4.2"
   },
   "devDependencies": {
+    "@types/isomorphic-fetch": "^0.0.36",
+    "@types/ws": "^8.5.3",
     "@zeit/ncc": "^0.22.1",
     "eslint": "^7.26.0",
-    "eslint-config-oclif": "^1.5.1"
+    "eslint-config-oclif": "^1.5.1",
+    "typescript": "^4.6.2"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -60,8 +63,9 @@
     "launch": "npm run prep && npm publish",
     "clearteststate": "node test/clearstate.test.js",
     "test": "node test/index.test.js && npm run clearteststate",
-    "bundle": "ncc build src/index.js -o lib"
+    "bundle": "ncc build src/index.ts -o lib"
   },
+  "types": "./dist/src/index.d.ts",
   "pre-commit": [
     "eslintfix"
   ]
