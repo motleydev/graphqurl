@@ -3,6 +3,8 @@
   "description": "cURL for GraphQL - CLI and JS library for making GraphQL queries",
   "version": "1.0.1",
   "author": "Hasura",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "bin": {
     "gq": "./bin/run",
     "graphqurl": "./bin/run"
@@ -38,6 +40,7 @@
   },
   "files": [
     "/bin",
+    "/lib",
     "/src"
   ],
   "homepage": "https://github.com/hasura/graphqurl",
@@ -48,7 +51,6 @@
     "autocomplete"
   ],
   "license": "Apache-2.0",
-  "main": "lib/index.js",
   "oclif": {
     "bin": "gq"
   },
@@ -65,7 +67,6 @@
     "test": "node test/index.test.js && npm run clearteststate",
     "bundle": "ncc build src/index.ts -o lib"
   },
-  "types": "lib/index.d.ts",
   "pre-commit": [
     "eslintfix"
   ]
