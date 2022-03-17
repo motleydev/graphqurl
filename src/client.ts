@@ -162,7 +162,9 @@ const makeClient = (options: ClientOpts): Client => {
         return wsConnection;
       } catch (e: any) {
         console.log(e);
-        throw new Error("Failed to establish the WebSocket connection: ", e);
+        throw new Error(
+          "Failed to establish the WebSocket connection: " + e.message
+        );
       }
     } else {
       throw new Error("Missing websocket parameters.");

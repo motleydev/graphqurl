@@ -48,7 +48,7 @@
     "autocomplete"
   ],
   "license": "Apache-2.0",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "oclif": {
     "bin": "gq"
   },
@@ -65,7 +65,7 @@
     "test": "node test/index.test.js && npm run clearteststate",
     "bundle": "ncc build src/index.ts -o lib"
   },
-  "types": "./dist/src/index.d.ts",
+  "types": "lib/index.d.ts",
   "pre-commit": [
     "eslintfix"
   ]
